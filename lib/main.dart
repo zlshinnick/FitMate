@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:workout_app/pages/home_page.dart';
+import 'package:workout_app/pages/onboarding_screen.dart';
 void main() async {
   // Initialize Hive Database
   await Hive.initFlutter();
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      theme: ThemeData(primarySwatch: Colors.blue),
+      home: OnBoardingScreen(),
+      theme: ThemeData(primarySwatch: Colors.grey),
     );
   }
 }

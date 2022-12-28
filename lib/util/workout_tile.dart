@@ -34,7 +34,7 @@ class WorkoutTile  extends StatelessWidget{
         child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.red,
             borderRadius: BorderRadius.circular(12)),
           child: Row(
             children: [
@@ -46,10 +46,12 @@ class WorkoutTile  extends StatelessWidget{
               ),
       
               // Workout Name
-              Text(
-                workoutName,
-                style: TextStyle(decoration: workoutCompleted ? TextDecoration.lineThrough : TextDecoration.none),
-                ), 
+              Expanded(
+                child: Text(
+                  workoutName,
+                  style: TextStyle(decoration: workoutCompleted ? TextDecoration.lineThrough : TextDecoration.none),
+                  ),
+              ), 
             ],
           ),
         ),

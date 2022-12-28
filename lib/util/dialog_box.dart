@@ -16,7 +16,7 @@ import 'package:workout_app/util/my_button.dart';
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: Colors.red,
       content: Container(
         height: 120, 
         child: Column(
@@ -24,25 +24,30 @@ import 'package:workout_app/util/my_button.dart';
          
           children: [
           // Get User Input
-          TextField(
+          TextFormField(
             controller: controller,
+            minLines:2,
+            maxLines:10,
+            keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            hintText: "Add a new workout"
+              border: OutlineInputBorder(),
+              hintText: "Add a new workout"
               ),
           ),
 
           // buttons 
-           Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-              // save
-              MyButton(text: "Save", onPressed: onSave),
-
-              const SizedBox(width: 8),
-              // cancel
-              MyButton(text: "Cancel", onPressed: onCancel),
-           ])
+           Expanded(
+             child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                // save
+                MyButton(text: "Save", onPressed: onSave),
+           
+                const SizedBox(width: 8),
+                // cancel
+                MyButton(text: "Cancel", onPressed: onCancel),
+             ]),
+           )
         ])
         )
     );

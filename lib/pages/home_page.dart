@@ -75,12 +75,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: Colors.grey[600],
       appBar: AppBar(
         title: Text('Workouts'),
         elevation: 0
 
       ),
+      
       floatingActionButton: FloatingActionButton(
           onPressed: createNewWorkout,
           child: Icon(Icons.add),
