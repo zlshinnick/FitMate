@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class WorkoutDataBase {
 
   List workoutList = [];
-
+  List runningList = [];
   // reference our box
   final _mybox = Hive.box('mybox');
 
@@ -11,6 +11,10 @@ class WorkoutDataBase {
   void CreateInitialData() {
     workoutList = [
       ["Add new workout", false],
+    ];
+
+    runningList = [
+      ["Add new run", false],
     ];
   }
 
@@ -23,4 +27,14 @@ class WorkoutDataBase {
   void updateData() {
     _mybox.put("WORKOUTLIST", workoutList);
   }
+
+  void loadDataRunning() {
+    runningList = _mybox.get("RUNNINGLIST");
+  }
+
+    // update the database
+  void updateDataRunning() {
+    _mybox.put("RUNNINGLIST", runningList);
+  }
+
 }

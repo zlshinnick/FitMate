@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:workout_app/pages/home_page.dart';
+import 'package:workout_app/pages/running_page.dart';
 
 class HidenDrawer extends StatefulWidget {
   const HidenDrawer({super.key});
@@ -25,7 +26,7 @@ class _HidenDrawerState extends State<HidenDrawer> {
     _pages = [
       ScreenHiddenDrawer(
       ItemHiddenMenu(
-        name: 'Homepage',
+        name: 'Gym Workout',
         baseStyle: myTextStyle,
         selectedStyle: TextStyle(),
       ),
@@ -33,11 +34,11 @@ class _HidenDrawerState extends State<HidenDrawer> {
        ),
              ScreenHiddenDrawer(
       ItemHiddenMenu(
-        name: 'Running',
+        name: 'Running Workout',
         baseStyle: myTextStyle,
         selectedStyle: TextStyle(),
       ),
-       HomePage()
+       RunningPage()
        ),
     ];
   }

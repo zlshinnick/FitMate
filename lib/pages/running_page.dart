@@ -4,14 +4,14 @@ import 'package:workout_app/data/database.dart';
 import 'package:workout_app/util/dialog_box.dart';
 import 'package:workout_app/util/workout_tile.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class RunningPage extends StatefulWidget {
+  const RunningPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RunningPage> createState() => _RunningPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RunningPageState extends State<RunningPage> {
   // Reference Hive Box Database
   final _mybox = Hive.box('mybox');
   WorkoutDataBase db = WorkoutDataBase();
@@ -19,10 +19,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // If first time openeing create deafult data
-    if(_mybox.get("WORKOUTLIST") == null) {
+    if(_mybox.get("RUNNINGLIST") == null) {
       db.CreateInitialData();
     } else {
-      db.loadData();
+      db.loadDataRunning();
     }
 
     super.initState();
@@ -36,19 +36,19 @@ class _HomePageState extends State<HomePage> {
   // checkbox was tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
-      db.workoutList[index][1] = !db.workoutList[index][1];
+      db.runningList[index][1] = !db.runningList[index][1];
     });
-    db.updateData();
+    db.updateDataRunning();
   }
 
   //save new workout
   void saveNewWorkout() {
     setState(() {
-      db.workoutList.add([_controller.text, false]);
+      db.runningList.add([_controller.text, false]);
       _controller.clear();
     });
     Navigator.of(context).pop();
-    db.updateData();
+    db.updateDataRunning();
   }
 
   // Create a New Workout
@@ -67,9 +67,9 @@ class _HomePageState extends State<HomePage> {
 
   void deleteWorkout(int index) {
     setState(() {
-      db.workoutList.removeAt(index);
+      db.runningList.removeAt(index);
     });
-    db.updateData();
+    db.updateDataRunning();
   }
 
   @override
@@ -88,11 +88,11 @@ class _HomePageState extends State<HomePage> {
         
          ),
       body: ListView.builder(
-        itemCount: db.workoutList.length,
+        itemCount: db.runningList.length,
         itemBuilder: (context, index) {
           return WorkoutTile(
-            workoutName: db.workoutList[index][0], 
-            workoutCompleted: db.workoutList[index][1], 
+            workoutName: db.runningList[index][0], 
+            workoutCompleted: db.runningList[index][1], 
             onChanged: (value) => checkBoxChanged(value, index),
             deleteFunction: (context) => deleteWorkout(index),
           );
