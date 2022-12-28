@@ -4,14 +4,14 @@ import 'package:workout_app/data/database.dart';
 import 'package:workout_app/util/dialog_box.dart';
 import 'package:workout_app/util/workout_tile.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class GoalPage extends StatefulWidget {
+  const GoalPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<GoalPage> createState() => _GoalPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GoalPageState extends State<GoalPage> {
   // Reference Hive Box Database
   final _mybox = Hive.box('mybox');
   AppDataBase db = AppDataBase();
@@ -19,10 +19,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // If first time openeing create deafult data
-    if(_mybox.get("WORKOUTLIST") == null) {
+    if(_mybox.get("GOALLIST") == null) {
       db.CreateInitialData();
     } else {
-      db.loadData();
+      db.loadDataGoal();
     }
 
     super.initState();
@@ -36,65 +36,61 @@ class _HomePageState extends State<HomePage> {
   // checkbox was tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
-      db.workoutList[index][1] = !db.workoutList[index][1];
+      db.goalList[index][1] = !db.goalList[index][1];
     });
-    db.updateData();
+    db.updateDataGoal();
   }
 
   //save new workout
-  void saveNewWorkout() {
+  void saveNewGOal() {
     setState(() {
-      db.workoutList.add([_controller.text, false]);
+      db.goalList.add([_controller.text, false]);
       _controller.clear();
     });
     Navigator.of(context).pop();
-    db.updateData();
+    db.updateDataGoal();
   }
 
   // Create a New Workout
-  void createNewWorkout() {
+  void createNewGoal() {
     showDialog(
       context: context,
       builder: (context) {
         return DialogBox(
           controller: _controller,
-          onSave: saveNewWorkout,
+          onSave: saveNewGOal,
           onCancel:() => Navigator.of(context).pop(),
         );
       },
     );
   }
 
-  void deleteWorkout(int index) {
+  void deleteGoal(int index) {
     setState(() {
-      db.workoutList.removeAt(index);
+      db.goalList.removeAt(index);
     });
-    db.updateData();
+    db.updateDataGoal();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:Colors.deepPurpleAccent[100],
-      /*appBar: AppBar(
-        title: Text('Your Workout'),
-        elevation: 0
 
-      ),*/
       
       floatingActionButton: FloatingActionButton(
-          onPressed: createNewWorkout,
+          onPressed: createNewGoal,
           child: Icon(Icons.add),
         
          ),
       body: ListView.builder(
-        itemCount: db.workoutList.length,
+        itemCount: db.goalList.length,
         itemBuilder: (context, index) {
           return WorkoutTile(
-            workoutName: db.workoutList[index][0], 
-            workoutCompleted: db.workoutList[index][1], 
+            workoutName: db.goalList[index][0], 
+            workoutCompleted: db.goalList[index][1], 
             onChanged: (value) => checkBoxChanged(value, index),
-            deleteFunction: (context) => deleteWorkout(index),
+            deleteFunction: (context) => deleteGoal(index),
           );
         },
       ),

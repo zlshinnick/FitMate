@@ -14,7 +14,7 @@ class OtherPage extends StatefulWidget {
 class _OtherPageState extends State<OtherPage> {
   // Reference Hive Box Database
   final _mybox = Hive.box('mybox');
-  WorkoutDataBase db = WorkoutDataBase();
+  AppDataBase db = AppDataBase();
 
   @override
   void initState() {
@@ -75,7 +75,7 @@ class _OtherPageState extends State<OtherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[600],
+      backgroundColor: Colors.deepPurpleAccent[100],
       /*appBar: AppBar(
         title: Text('Your Workout'),
         elevation: 0

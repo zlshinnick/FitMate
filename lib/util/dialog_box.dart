@@ -16,7 +16,7 @@ import 'package:workout_app/util/my_button.dart';
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.deepPurpleAccent,
       content: Container(
         height: 120, 
         child: Column(

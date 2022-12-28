@@ -34,7 +34,7 @@ class WorkoutTile  extends StatelessWidget{
         child: Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: Colors.deepPurpleAccent,
             borderRadius: BorderRadius.circular(12)),
           child: Row(
             children: [

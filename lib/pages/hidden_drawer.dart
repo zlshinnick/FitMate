@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
+import 'package:workout_app/pages/goal_page.dart';
 import 'package:workout_app/pages/home_page.dart';
+import 'package:workout_app/pages/mealplanner_page.dart';
 import 'package:workout_app/pages/other_page.dart';
 import 'package:workout_app/pages/running_page.dart';
 
@@ -27,6 +29,14 @@ class _HidenDrawerState extends State<HidenDrawer> {
     _pages = [
       ScreenHiddenDrawer(
       ItemHiddenMenu(
+        name: 'Meal Planner',
+        baseStyle: myTextStyle,
+        selectedStyle: TextStyle(),
+      ),
+       MealPage()
+       ),
+      ScreenHiddenDrawer(
+      ItemHiddenMenu(
         name: 'Gym Workout',
         baseStyle: myTextStyle,
         selectedStyle: TextStyle(),
@@ -49,11 +59,19 @@ class _HidenDrawerState extends State<HidenDrawer> {
       ),
        OtherPage()
        ),
+             ScreenHiddenDrawer(
+      ItemHiddenMenu(
+        name: 'Goals',
+        baseStyle: myTextStyle,
+        selectedStyle: TextStyle(),
+      ),
+      GoalPage()
+       ),
     ];
   }
   Widget build(BuildContext context) {
     return HiddenDrawerMenu(
-      backgroundColorMenu: Colors.blueGrey,
+      backgroundColorMenu: Colors.deepPurpleAccent.shade200,
       screens: _pages,
       initPositionSelected: 0,
       slidePercent: 60,
