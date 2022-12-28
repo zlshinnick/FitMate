@@ -13,7 +13,7 @@ class IntroPage3 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'SWEATING!',
+                      'FIT!',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 46,
