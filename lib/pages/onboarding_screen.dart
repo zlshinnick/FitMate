@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:workout_app/pages/home_page.dart';
 import 'package:workout_app/pages/intro_screens/intro_page_1.dart';
 import 'package:workout_app/pages/intro_screens/intro_page_2.dart';
 import 'package:workout_app/pages/intro_screens/intro_page_3.dart';
 
+import 'hidden_drawer.dart';
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key:key);
 
@@ -65,7 +67,7 @@ bool onLast = false;
               onTap: () {
                   Navigator.push(context,
                    MaterialPageRoute(builder: (context) {
-                    return HomePage();
+                    return HidenDrawer();
               })
                 ); 
                },        

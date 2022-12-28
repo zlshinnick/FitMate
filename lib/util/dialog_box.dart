@@ -31,7 +31,7 @@ import 'package:workout_app/util/my_button.dart';
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: "Add a new workout"
+              hintText: "Add an Excersice"
               ),
           ),
 
