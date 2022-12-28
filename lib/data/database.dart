@@ -4,6 +4,8 @@ class WorkoutDataBase {
 
   List workoutList = [];
   List runningList = [];
+  List otherList = [];
+
   // reference our box
   final _mybox = Hive.box('mybox');
 
@@ -16,6 +18,11 @@ class WorkoutDataBase {
     runningList = [
       ["Add new run", false],
     ];
+
+
+    runningList = [
+      ["Add new excersice", false],
+    ];
   }
 
   // load data from database
@@ -24,6 +31,7 @@ class WorkoutDataBase {
   }
 
   // update the database
+
   void updateData() {
     _mybox.put("WORKOUTLIST", workoutList);
   }
@@ -32,9 +40,16 @@ class WorkoutDataBase {
     runningList = _mybox.get("RUNNINGLIST");
   }
 
-    // update the database
   void updateDataRunning() {
     _mybox.put("RUNNINGLIST", runningList);
+  }
+
+  void loadDataOther() {
+    otherList = _mybox.get("OTHERLIST");
+  }
+
+  void updateDataOther() {
+    _mybox.put("OTHERLIST", otherList);
   }
 
 }
