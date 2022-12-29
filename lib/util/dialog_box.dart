@@ -17,39 +17,41 @@ import 'package:workout_app/util/my_button.dart';
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.deepPurpleAccent,
-      content: Container(
-        height: 120, 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-         
-          children: [
-          // Get User Input
-          TextFormField(
-            controller: controller,
-            minLines:2,
-            maxLines:10,
-            keyboardType: TextInputType.multiline,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: "Add an Excersice"
-              ),
-          ),
-
-          // buttons 
-           Expanded(
-             child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                // save
-                MyButton(text: "Save", onPressed: onSave),
+      content: Expanded(
+        child: Container(
+          height: 120, 
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
            
-                const SizedBox(width: 8),
-                // cancel
-                MyButton(text: "Cancel", onPressed: onCancel),
-             ]),
-           )
-        ])
-        )
+            children: [
+            // Get User Input
+            TextFormField(
+              controller: controller,
+              minLines:1,
+              maxLines:3,
+              keyboardType: TextInputType.multiline,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Add something"
+                ),
+            ),
+      
+            // buttons 
+             Expanded(
+               child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                  // save
+                  MyButton(text: "Save", onPressed: onSave),
+             
+                  const SizedBox(width: 8),
+                  // cancel
+                  MyButton(text: "Cancel", onPressed: onCancel),
+               ]),
+             )
+          ])
+          ),
+      )
     );
   }
 }
